@@ -1,4 +1,4 @@
-# Quiz Application
+# Application
 
 ## Requirements
 - Node v16.15.0 (LTS)
@@ -32,5 +32,4 @@
    ```
 
 ### Documentation
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/472195-a2e1918c-b1b1-40fb-ac34-093af8c353f0?action=collection%2Ffork&collection-url=entityId%3D472195-a2e1918c-b1b1-40fb-ac34-093af8c353f0%26entityType%3Dcollection%26workspaceId%3Db9e34bd0-2c17-4ff3-b042-82ffda653253)
 
