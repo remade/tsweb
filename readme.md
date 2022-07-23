@@ -9,7 +9,7 @@
 ## Getting Started
 1. Clone the repository
    ```
-   :$ git clone git@git.toptal.com:screening/Remi.git
+   :$ https://github.com/remade/tsweb.git
    ```
 2. Install all nodejs dependencies
    ```
