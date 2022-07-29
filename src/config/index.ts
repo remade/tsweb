@@ -3,7 +3,7 @@ const configuration = {
         environment: process.env.NODE_ENV || 'development',
         port: process.env.PORT || 5000,
     },
-    database: {
+    databases: {
         core: {
             client: 'postgres',
             connection: {
