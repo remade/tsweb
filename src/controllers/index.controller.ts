@@ -5,7 +5,7 @@ export class IndexController {
     protected repository: RepositoryInterface;
 
     constructor(repository: RepositoryInterface) {
-        this.repository = repository
+        this.repository = repository;
     }
 
     public index = (req: Request, res: Response, next: NextFunction): void => {

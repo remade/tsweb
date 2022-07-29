@@ -1,3 +1,6 @@
+import { config as dotenvConfig } from 'dotenv';
+dotenvConfig({ path: `.env` });
+
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
@@ -7,7 +10,7 @@ import hpp from 'hpp';
 import morgan from 'morgan';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
-import { NODE_ENV, PORT, LOG_FORMAT, ORIGIN, CREDENTIALS } from '@config';
+import { config } from '@config';
 import { Routes } from '@interfaces/routes.interface';
 import errorMiddleware from '@middlewares/error.middleware';
 import { logger, stream } from '@utils/logger';
@@ -18,9 +21,10 @@ export default class App {
     public port: string | number;
 
     constructor(routes: Routes[]) {
+        const { port, environment } = config('app');
         this.app = express();
-        this.env = NODE_ENV || 'development';
-        this.port = PORT || 3000;
+        this.env = environment;
+        this.port = port;
 
         this.initializeMiddlewares();
         this.initializeRoutes(routes);
@@ -42,8 +46,8 @@ export default class App {
     }
 
     private initializeMiddlewares() {
-        this.app.use(morgan(LOG_FORMAT, { stream }));
-        this.app.use(cors({ origin: ORIGIN, credentials: CREDENTIALS }));
+        this.app.use(morgan(config('logging.format'), { stream }));
+        this.app.use(cors({ origin: '*', credentials: true }));
         this.app.use(hpp());
         this.app.use(helmet());
         this.app.use(compression());

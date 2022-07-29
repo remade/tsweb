@@ -2,13 +2,12 @@ import { existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
 import winston from 'winston';
 import winstonDaily from 'winston-daily-rotate-file';
-import { LOG_DIR } from '@config';
+import { config } from '@config';
 
 // logs dir
-const logDir: string = join(__dirname, LOG_DIR);
-
+const logDir: string = join(__dirname, config('logging.directory'));
 if (!existsSync(logDir)) {
-    mkdirSync(logDir);
+    throw new Error(`Logging directory ${logDir} does not exist`);
 }
 
 // Define log format
