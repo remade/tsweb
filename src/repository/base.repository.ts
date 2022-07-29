@@ -1,16 +1,16 @@
-import Knex from "knex";
+import Knex from 'knex';
 
 export interface BaseRepositoryInterface<TModel> {
-    getContext(schema?: string)
-    create(data: TModel)
-    bulkCreate(data: any[])
-    exists(where: any)
-    find(where: any)
-    findOne(where: any)
-    findByIdIn(values: string[])
-    update(id: string, data: TModel)
-    updateBy(where: any, data: TModel)
-    delete(where: any)
+    getContext(schema?: string);
+    create(data: TModel);
+    bulkCreate(data: any[]);
+    exists(where: any);
+    find(where: any);
+    findOne(where: any);
+    findByIdIn(values: string[]);
+    update(id: string, data: TModel);
+    updateBy(where: any, data: TModel);
+    delete(where: any);
 }
 
 export abstract class BaseRepository<TModel> {
@@ -23,7 +23,7 @@ export abstract class BaseRepository<TModel> {
     }
 
     getContext(schema?: string) {
-        return this.dbConnection(schema || this.table)
+        return this.dbConnection(schema || this.table);
     }
 
     async create(data: TModel) {
@@ -35,27 +35,23 @@ export abstract class BaseRepository<TModel> {
     }
 
     async exists(where: any = {}) {
-        const rows = await this.getContext().where(where).select("id");
+        const rows = await this.getContext().where(where).select('id');
         return rows.length > 0;
     }
 
     async find(where: any = {}) {
-        return this.getContext().where(where).select("*");
+        return this.getContext().where(where).select('*');
     }
 
     async findOne(where: any = {}) {
-        return this.getContext().where(where).first("*");
+        return this.getContext().where(where).first('*');
     }
 
     async findByIdIn(values: string[]) {
-        return this.getContext()
-            .whereIn('id', values)
-            .select('*');
+        return this.getContext().whereIn('id', values).select('*');
     }
     async update(id: string, data: TModel) {
-        return this.getContext()
-            .where('id', id)
-            .update(data);
+        return this.getContext().where('id', id).update(data);
     }
 
     updateBy(where: any, data: TModel) {
@@ -63,7 +59,6 @@ export abstract class BaseRepository<TModel> {
     }
 
     delete(where: any) {
-        return this.getContext().where(where).delete()
+        return this.getContext().where(where).delete();
     }
-
 }

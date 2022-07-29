@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import {IndexController } from '@controllers/index.controller';
+import { IndexController } from '@controllers/index.controller';
 import { Routes } from '@interfaces/routes.interface';
 import { RepositoryInterface } from '@/repository';
 
@@ -12,7 +12,7 @@ class IndexRoute implements Routes {
 
     constructor(repository: RepositoryInterface) {
         this.repository = repository;
-        this.controller = new IndexController(this.repository)
+        this.controller = new IndexController(this.repository);
 
         this.initializeRoutes();
     }

@@ -2,7 +2,7 @@ import { Request } from 'express';
 import { RequestValidationError } from '@exceptions/index';
 
 export const validateRequests = (schema: any, request: Request, options: any = {}) => {
-    const { abortEarly = false, allowUnknown = true } = options; 
+    const { abortEarly = false, allowUnknown = true } = options;
     if (typeof schema === 'function') {
         schema = schema();
     }

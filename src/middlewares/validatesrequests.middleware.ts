@@ -6,17 +6,16 @@ export default (validationSchema): RequestHandler => {
     return (req, res, next) => {
         try {
             validateRequests(validationSchema, req);
-            next()
+            next();
         } catch (err) {
-            if (err instanceof RequestValidationError)  {
-               return res.status(422).json({
-                   "message": "invalid_request",
-                   "errors": err.data
-               })
+            if (err instanceof RequestValidationError) {
+                return res.status(422).json({
+                    message: 'invalid_request',
+                    errors: err.data,
+                });
             } else {
-                next(err)
+                next(err);
             }
         }
     };
 };
-

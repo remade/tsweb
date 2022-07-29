@@ -35,10 +35,10 @@ export class RequestValidationError extends DomainError {
         super({ message, error });
         this.error_name = 'invalid_request';
 
-        if (error && (error instanceof joi.ValidationError)) {
-            const fieldErrors: any = {}
+        if (error && error instanceof joi.ValidationError) {
+            const fieldErrors: any = {};
             error.details.forEach(errorDetail => {
-                const field = fieldErrors[errorDetail.context.label] || []
+                const field = fieldErrors[errorDetail.context.label] || [];
                 field.push(errorDetail.message);
 
                 fieldErrors[errorDetail.context.label] = field;
